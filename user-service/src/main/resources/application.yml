@@ -1,0 +1,80 @@
+# 1. IDENTIFICACIÓN DEL MICROSERVICIO Y PUERTO
+server:
+  port: 8081
+
+spring:
+  application:
+    name: usuarios-service
+
+  # 2. CONFIGURACIÓN DE BASE DE DATOS (MySQL)
+  datasource:
+    url: jdbc:mysql://localhost:3306/user-service?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true [1]
+    username: root
+    password: ${DB_PASSWORD}
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  # 3. CONFIGURACIÓN DE JPA / HIBERNATE
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        format_sql: true
+
+  # 5. CONFIGURACIÓN DE SPRING CLOUD CONFIG
+  cloud:
+    config:
+      enabled: false
+
+  # 8. CONFIGURACIÓN DE REDIS
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 60000
+
+  # 9. CONFIGURACIÓN DE CORREO (SMTP)
+  mail:
+    host: ://brevo.com
+    port: 587
+    username: adrianm1993@gmail.com
+    password: ${SMTP_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+            required: true
+
+# 4. CONFIGURACIÓN DE SPRING CLOUD (EUREKA CLIENT)
+eureka:
+  client:
+    enabled: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+# 6. ACTUATOR (MONITORIZACIÓN)
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, metrics
+  endpoint:
+    health:
+      show-details: always
+
+# 7. SEGURIDAD Y JWT
+jwt:
+  secret: ${JWT_SECRET}
+  expiration-ms: 3600000 # 1 hora
+  refresh-expiration-ms: 604800000 # 7 días
+
+# CONFIGURACIONES PROPIAS DE LA APLICACIÓN
+app:
+  mail:
+    activation-url: http://localhost:8081/api/v1/auth/activate?token=
+    reset-password-url: http://localhost:8081/api/v1/auth/reset-password?token=
+    from: adrianma1993@gmail.com
