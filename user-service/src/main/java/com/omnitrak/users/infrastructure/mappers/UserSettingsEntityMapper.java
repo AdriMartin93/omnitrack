@@ -3,7 +3,9 @@ package com.omnitrak.users.infrastructure.mappers;
 import com.omnitrak.users.domain.models.UserSettings;
 import com.omnitrak.users.domain.models.enums.Theme;
 import com.omnitrak.users.infrastructure.entities.UserSettingsEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserSettingsEntityMapper {
 
     public UserSettings toDomain(UserSettingsEntity entity) {

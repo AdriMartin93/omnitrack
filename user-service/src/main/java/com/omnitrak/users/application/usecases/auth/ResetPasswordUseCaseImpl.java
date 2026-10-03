@@ -1,5 +1,6 @@
 package com.omnitrak.users.application.usecases.auth;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.models.User;
 import com.omnitrak.users.domain.ports.in.auth.ResetPasswordUseCase;
 import com.omnitrak.users.domain.ports.out.account.AccountPersistencePort;
@@ -8,6 +9,7 @@ import com.omnitrak.users.domain.ports.out.auth.PasswordResetTokenPort;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+@UseCase
 public class ResetPasswordUseCaseImpl implements ResetPasswordUseCase {
 
     private final PasswordEncoderPort passwordEncoderPort;

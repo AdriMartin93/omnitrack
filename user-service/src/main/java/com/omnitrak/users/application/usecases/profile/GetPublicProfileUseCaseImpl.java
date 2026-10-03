@@ -1,5 +1,6 @@
 package com.omnitrak.users.application.usecases.profile;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.factory.PublicProfileFactory;
 import com.omnitrak.users.domain.models.PublicProfile;
 import com.omnitrak.users.domain.models.User;
@@ -10,6 +11,7 @@ import com.omnitrak.users.domain.ports.out.settings.SettingsPersistencePort;
 
 import java.util.UUID;
 
+@UseCase
 public class GetPublicProfileUseCaseImpl implements GetPublicProfileUseCase {
 
     private final ProfilePersistencePort profilePersistencePort;

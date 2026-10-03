@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class AuthService implements AuthenticateUserUseCase, LogoutUserUseCase, RefreshTokenUseCase, RegisterUserUseCase, RequestPasswordUseCase, ResetPasswordUseCase {
+public class AuthService {
 
     private final AuthenticateUserUseCase authenticateUserUseCase;
     private final LogoutUserUseCase logoutUserUseCase;
@@ -20,32 +20,32 @@ public class AuthService implements AuthenticateUserUseCase, LogoutUserUseCase, 
     private final ResetPasswordUseCase resetPasswordUseCase;
 
 
-    @Override
+
     public AuthTokens login(String username, String password) {
         return authenticateUserUseCase.login(username, password);
     }
 
-    @Override
+
     public void logout(UUID userId, String refreshToken) {
         logoutUserUseCase.logout(userId, refreshToken);
     }
 
-    @Override
+
     public AuthTokens refresh(String refreshToken) {
         return refreshTokenUseCase.refresh(refreshToken);
     }
 
-    @Override
+
     public User registerUser(String username, String email, String password) {
         return registerUserUseCase.registerUser(username, email, password);
     }
 
-    @Override
+
     public void requestPasswordReset(String email) {
         requestPasswordUseCase.requestPasswordReset(email);
     }
 
-    @Override
+
     public void resetPassword(String token, String newPassword) {
         resetPasswordUseCase.resetPassword(token, newPassword);
     }

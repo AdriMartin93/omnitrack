@@ -1,5 +1,6 @@
 package com.omnitrak.users.application.usecases.auth;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.models.User;
 import com.omnitrak.users.domain.ports.in.auth.RegisterUserUseCase;
 import com.omnitrak.users.domain.ports.out.account.AccountPersistencePort;
@@ -10,6 +11,7 @@ import com.omnitrak.users.domain.ports.out.auth.PasswordEncoderPort;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
+@UseCase
 public class RegisterUserUseCaseImpl implements RegisterUserUseCase {
 
     private static final long ACTIVATION_TOKEN_TTL_MINUTES = 1440;

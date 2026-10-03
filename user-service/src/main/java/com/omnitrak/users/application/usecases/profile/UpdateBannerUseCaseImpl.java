@@ -1,11 +1,13 @@
 package com.omnitrak.users.application.usecases.profile;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.models.User;
 import com.omnitrak.users.domain.ports.in.profile.UpdateBannerUseCase;
 import com.omnitrak.users.domain.ports.out.profile.ProfilePersistencePort;
 
 import java.util.UUID;
 
+@UseCase
 public class UpdateBannerUseCaseImpl implements UpdateBannerUseCase {
 
     private final ProfilePersistencePort profilePersistencePort;

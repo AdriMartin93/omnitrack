@@ -1,10 +1,12 @@
 package com.omnitrak.users.application.usecases.account;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.models.User;
 import com.omnitrak.users.domain.ports.in.auth.ActivateAccountUseCase;
 import com.omnitrak.users.domain.ports.out.account.AccountPersistencePort;
 import com.omnitrak.users.domain.ports.out.auth.ActivationTokenPort;
 
+@UseCase
 public class ActivateAccountUseCaseImpl implements ActivateAccountUseCase {
 
     private final ActivationTokenPort activationTokenPort;

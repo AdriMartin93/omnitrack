@@ -1,10 +1,12 @@
 package com.omnitrak.users.application.usecases.auth;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.ports.in.auth.LogoutUserUseCase;
 import com.omnitrak.users.domain.ports.out.auth.TokenBlacklistPort;
 
 import java.util.UUID;
 
+@UseCase
 public class LogoutUserUseCaseImpl implements LogoutUserUseCase {
 
     private final TokenBlacklistPort tokenBlacklistPort;

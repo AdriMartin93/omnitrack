@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -22,6 +23,7 @@
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="api.gateway" target="21" />
+      <module name="omnitrak-backend" target="1.5" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

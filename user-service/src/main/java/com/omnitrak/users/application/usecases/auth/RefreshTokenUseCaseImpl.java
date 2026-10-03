@@ -1,10 +1,11 @@
 package com.omnitrak.users.application.usecases.auth;
 
+import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.models.AuthTokens;
 import com.omnitrak.users.domain.ports.in.auth.RefreshTokenUseCase;
 import com.omnitrak.users.domain.ports.out.auth.TokenProviderPort;
 
-
+@UseCase
 public class RefreshTokenUseCaseImpl implements RefreshTokenUseCase {
 
     private final TokenProviderPort tokenProviderPort;

@@ -1,6 +1,7 @@
 package com.omnitrak.users.infrastructure.config;
 
 
+import com.omnitrak.users.domain.ports.out.auth.TokenProviderPort;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -14,4 +15,8 @@ public class SecurityBeansConfig {
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter(TokenProviderPort tokenProviderPort) {
+        return new JwtAuthenticationFilter(tokenProviderPort);
+    }
 }
