@@ -17,7 +17,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/v1/account")
-public class AccountController {
+public class  AccountController {
 
     private final ChangeEmailUseCase changeEmailuseCase;
     private final ChangePasswordUseCase changePasswordUseCase;

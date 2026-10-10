@@ -64,7 +64,7 @@ public class AuthController {
         return ResponseEntity.ok(Map.of("message", "Cuenta activada con éxito. Ya puedes iniciar sesión."));
     }
 
-    @PostMapping
+    @PostMapping("/login")
     public ResponseEntity<AuthResponseDto> login(@Valid @RequestBody LoginRequestDto request) {
         AuthTokens tokens = authenticateUserUseCase.login(request.username(), request.password());
         return ResponseEntity.ok(AuthResponseDto.of(tokens.getAccessToken(), tokens.getRefreshToken()));
