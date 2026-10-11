@@ -1,6 +1,7 @@
 package com.omnitrak.catalog_service.domain.models.values;
 
 
+import com.omnitrak.catalog_service.domain.models.enums.AnimeSeason;
 import com.omnitrak.catalog_service.domain.models.enums.MediaType;
 import com.omnitrak.catalog_service.domain.models.enums.ReleaseStatus;
 import lombok.Builder;
@@ -18,6 +19,8 @@ public class CatalogFilter {
     private final ReleaseStatus status;
     private final String platform;  // este es solo para juegos
     private final List<String> authors; // con autor me refiero a manga
+    private final Integer seasonYear; // basicamente para el anime
+    private final AnimeSeason season;
     private final int page;
     private final int size;
 

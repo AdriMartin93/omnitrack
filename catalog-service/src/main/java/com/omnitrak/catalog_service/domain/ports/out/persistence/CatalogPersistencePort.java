@@ -12,9 +12,9 @@ import java.util.Optional;
 
 public interface CatalogPersistencePort {
 
-    MediaItem save(MediaItem mediaItem);
+    <T extends MediaItem> T save(T mediaItem);
     Optional<MediaItem> findById(String id);
-    Optional<MediaItem> findByExternalMalIdAndType(Long malId, MediaType type);
+    Optional<AnimeItem> findByExternalMalIdAndType(Long malId, MediaType type);
     List<MediaItem> findUpcoming(Instant from, Instant to);
     List<MediaItem> search(String query, MediaType type, int page, int size);
     boolean existsById(String id);

@@ -12,7 +12,7 @@ spring:
     gateway:
       routes:
         #Users-service
-        -id: users-service
-        uri: lb://users-service
-        predicates:
-          -Path=/api/v1/auth/**, /api/v1/account/**, /api/v1/profile/**, api/v1/settings/**
+        - id: users-service
+          uri: lb://users-service
+          predicates:
+            - Path=/api/v1/auth/**, /api/v1/account/**, /api/v1/profile/**, api/v1/settings/**

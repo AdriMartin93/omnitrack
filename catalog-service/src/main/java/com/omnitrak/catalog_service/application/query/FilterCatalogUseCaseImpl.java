@@ -6,7 +6,7 @@ import com.omnitrak.catalog_service.domain.models.values.CatalogFilter;
 import com.omnitrak.catalog_service.domain.ports.in.query.FilterCatalogUseCase;
 import com.omnitrak.catalog_service.domain.ports.out.persistence.CatalogPersistencePort;
 import lombok.RequiredArgsConstructor;
-import org.springframework.messaging.simp.annotation.SendToUser;
+
 
 import java.util.Collections;
 import java.util.List;

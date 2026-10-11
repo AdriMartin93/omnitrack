@@ -1,0 +1,24 @@
+package com.omnitrak.catalog_service.application.sync;
+
+import com.omnitrak.catalog_service.domain.annotations.UseCase;
+import com.omnitrak.catalog_service.domain.models.media.AnimeItem;
+import com.omnitrak.catalog_service.domain.ports.in.sync.SyncAnimeFromExternalProviderUseCase;
+import com.omnitrak.catalog_service.domain.ports.out.external.ExternalAnimeProviderPort;
+import com.omnitrak.catalog_service.domain.ports.out.persistence.CatalogPersistencePort;
+import lombok.RequiredArgsConstructor;
+
+@UseCase
+@RequiredArgsConstructor
+public class SyncAnimeFromExternalProviderUseCaseImpl implements SyncAnimeFromExternalProviderUseCase {
+
+    private final ExternalAnimeProviderPort externalAnimeProviderPort;
+    private final CatalogPersistencePort catalogPersistencePort;
+
+    @Override
+    public AnimeItem execute(Long externalMalId){
+        AnimeItem anime = externalAnimeProviderPort.fetchAnimeById(externalMalId)
+                .orElseThrow(()-> new IllegalArgumentException("Anime no encontrado en: "+externalMalId));
+
+        return catalogPersistencePort.save(anime);
+    }
+}
