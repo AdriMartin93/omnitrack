@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.List;
 
 @Data
@@ -14,8 +13,8 @@ import java.util.List;
 @AllArgsConstructor
 public class SeasonDocument {
     private Integer seasonNumber;
-    private String title;
+    private String name;
     private String synopsis;
-    private Instant premiereDate;
+    private LocalDate airDate;
     private List<EpisodeDocument> episodes;
 }

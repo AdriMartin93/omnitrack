@@ -15,4 +15,5 @@ public class Episode {
     private final String synopsis;
     private final Instant airDate;
     private final Integer durationMinutes;
+    private final String thumbnailImageUrl;
 }

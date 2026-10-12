@@ -12,7 +12,7 @@ import java.util.List;
 @SuperBuilder
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
+@EqualsAndHashCode(callSuper = true) //comparamos id del apdre y titulo del hijo, sino daria error al tener 2 juegos de mimso nombre
 public class VideoGameDocument extends MediaDocument {
 
     private List<String> developers;

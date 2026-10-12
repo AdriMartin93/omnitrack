@@ -15,7 +15,7 @@ public abstract class MediaItem {
     protected final String id;
     protected final String title;
     protected final String originalTitle;
-    protected List<String> alternativetitles;
+    protected List<String> alternativeTitles;
 
     protected final String synopsis;
     protected final String posterUrl;
