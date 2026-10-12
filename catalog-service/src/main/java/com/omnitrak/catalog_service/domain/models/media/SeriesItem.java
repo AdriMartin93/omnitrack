@@ -15,7 +15,10 @@ import java.util.Optional;
 public class SeriesItem extends MediaItem {
 
     private final List<Season> seasons;
+    private final Integer totalSeasons;
     private final Integer totalEpisodes;
+    private final List<String> networks; //por ejemplo hbo, netflix etc.
+    private final Boolean inProduction;
 
 
     public Optional<Episode> getNextUpcomingEpisode() {

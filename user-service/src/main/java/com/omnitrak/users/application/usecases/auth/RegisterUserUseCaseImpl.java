@@ -2,6 +2,7 @@ package com.omnitrak.users.application.usecases.auth;
 
 import com.omnitrak.users.domain.annotations.UseCase;
 import com.omnitrak.users.domain.models.User;
+import com.omnitrak.users.domain.models.enums.Role;
 import com.omnitrak.users.domain.ports.in.auth.RegisterUserUseCase;
 import com.omnitrak.users.domain.ports.out.account.AccountPersistencePort;
 import com.omnitrak.users.domain.ports.out.auth.ActivationTokenPort;
@@ -42,18 +43,7 @@ public class RegisterUserUseCaseImpl implements RegisterUserUseCase {
         }
 
         String encodedPassword = passwordEncoderPort.encode(rawPassword);
-        User newUser = new User(
-                UUID.randomUUID(),
-                username,
-                encodedPassword,
-                email,
-                "USER",
-                null,
-                null,
-                null,
-                false,
-                null,
-                LocalDateTime.now());
+        User newUser = User.createNew(username, encodedPassword, email);
         User savedUser = accountPersistencePort.save(newUser);
 
         String activationToken = UUID.randomUUID().toString();

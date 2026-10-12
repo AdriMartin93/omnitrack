@@ -14,11 +14,10 @@ public interface CatalogPersistencePort {
 
     <T extends MediaItem> T save(T mediaItem);
     Optional<MediaItem> findById(String id);
-    Optional<AnimeItem> findByExternalMalIdAndType(Long malId, MediaType type);
+    Optional<AnimeItem> findByExternalProviderAndExternalId(String externalProvider, Long externalId);
     List<MediaItem> findUpcoming(Instant from, Instant to);
     List<MediaItem> search(String query, MediaType type, int page, int size);
     boolean existsById(String id);
     List<MediaItem> findByTypeAndReleaseDateBetween(MediaType type, Instant from, Instant to);
-    List<AnimeItem> findAnimeBySeason(int year, AnimeSeason season);
     List<MediaItem> findByCriteria(CatalogFilter filter);
 }

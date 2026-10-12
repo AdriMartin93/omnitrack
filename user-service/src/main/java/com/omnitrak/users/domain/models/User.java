@@ -1,5 +1,6 @@
 package com.omnitrak.users.domain.models;
 
+import com.omnitrak.users.domain.models.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +19,7 @@ public class User {
     private String username;
     private String password;
     private String email;
-    private String role;
+    private Role role;
     private String avatarUrl;
     private String bannerUrl;
     private String bio;
@@ -81,7 +82,21 @@ public class User {
         this.username = newUsername;
     }
 
-
+    public static User createNew(String username, String encodedPassword, String email) {
+        return new User(
+                UUID.randomUUID(),
+                username,
+                encodedPassword,
+                email,
+                Role.USER,
+                null,
+                null,
+                null,
+                false,
+                null,
+                LocalDateTime.now()
+        );
+    }
 
 
 

@@ -16,9 +16,9 @@ public class SyncMangaFromExternalProviderUseCaseImpl implements SyncMangaFromEx
     private final CatalogPersistencePort catalogPersistencePort;
 
     @Override
-    public MangaItem execute(Long externalMalId){
-        MangaItem manga = externalMangaProviderPort.fetchMangaById(externalMalId)
-                .orElseThrow(() -> new IllegalArgumentException("Manga no encontrado con id :" + externalMalId));
+    public MangaItem execute(Long externalId){
+        MangaItem manga = externalMangaProviderPort.fetchMangaById(externalId)
+                .orElseThrow(() -> new IllegalArgumentException("Manga no encontrado con id :" + externalId));
 
         return catalogPersistencePort.save(manga);
     }

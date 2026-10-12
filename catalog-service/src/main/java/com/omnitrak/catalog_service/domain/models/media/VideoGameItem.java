@@ -9,7 +9,9 @@ import java.util.List;
 @SuperBuilder
 public class VideoGameItem extends MediaItem {
 
-    private final String developer;
-    private final String publisher;
+    private final List<String> developers;
+    private final List<String> publishers;
     private final List<String> platforms;
+    private final List<String> gameModes; //esto se refiere a 1 o 2 jugadores, cooperativo...
+    private final String engine; //por ejemplo Unreal Engine, RE engine..
 }

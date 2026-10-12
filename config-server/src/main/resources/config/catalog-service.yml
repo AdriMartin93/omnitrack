@@ -5,6 +5,7 @@ spring:
   data:
     mongodb:
       uri: mongodb://localhost:27017/omnitrak_catalog
+      auto-index-creation: true
     redis:
       host: localhost
       port: 6379

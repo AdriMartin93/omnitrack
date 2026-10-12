@@ -15,6 +15,8 @@ public abstract class MediaItem {
     protected final String id;
     protected final String title;
     protected final String originalTitle;
+    protected List<String> alternativetitles;
+
     protected final String synopsis;
     protected final String posterUrl;
     protected final String bannerUrl;
@@ -23,6 +25,10 @@ public abstract class MediaItem {
     protected final MediaType type;
     protected final ReleaseStatus status;
 
+    protected final String externalProvider;
+    protected final Long externalId;
+    protected final Instant lastSyncedAt;
+    protected final String syncStatus;
 
     public TimeRemaining getTimeUntilRelease() {
         return new TimeRemaining(this.releaseDate, Instant.now());

@@ -15,9 +15,9 @@ public class SyncAnimeFromExternalProviderUseCaseImpl implements SyncAnimeFromEx
     private final CatalogPersistencePort catalogPersistencePort;
 
     @Override
-    public AnimeItem execute(Long externalMalId){
-        AnimeItem anime = externalAnimeProviderPort.fetchAnimeById(externalMalId)
-                .orElseThrow(()-> new IllegalArgumentException("Anime no encontrado en: "+externalMalId));
+    public AnimeItem execute(Long externalId){
+        AnimeItem anime = externalAnimeProviderPort.fetchAnimeById(externalId)
+                .orElseThrow(()-> new IllegalArgumentException("Anime no encontrado en: "+externalId));
 
         return catalogPersistencePort.save(anime);
     }

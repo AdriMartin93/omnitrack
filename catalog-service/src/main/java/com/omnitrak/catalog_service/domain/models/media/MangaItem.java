@@ -13,5 +13,5 @@ public class MangaItem extends MediaItem {
     private final Integer totalChapters;
     private final List<String> authors;
     private final String serialization;
-    private final Long externalMalId;
+    private final String demographic;
 }
