@@ -7,6 +7,8 @@ import com.omnitrak.catalog_service.domain.ports.out.external.ExternalAnimeProvi
 import com.omnitrak.catalog_service.domain.ports.out.persistence.CatalogPersistencePort;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 @UseCase
 @RequiredArgsConstructor
 public class SyncAnimeFromExternalProviderUseCaseImpl implements SyncAnimeFromExternalProviderUseCase {
@@ -16,6 +18,14 @@ public class SyncAnimeFromExternalProviderUseCaseImpl implements SyncAnimeFromEx
 
     @Override
     public AnimeItem execute(Long externalId){
+
+        Optional<AnimeItem> existingAnime = catalogPersistencePort
+                .findByExternalProviderAndExternalId("MAL", externalId);
+
+        if(existingAnime.isPresent()){
+            return existingAnime.get();
+        }
+
         AnimeItem anime = externalAnimeProviderPort.fetchAnimeById(externalId)
                 .orElseThrow(()-> new IllegalArgumentException("Anime no encontrado en: "+externalId));
 

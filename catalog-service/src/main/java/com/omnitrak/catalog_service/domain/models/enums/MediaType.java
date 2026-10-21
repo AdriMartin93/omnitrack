@@ -6,5 +6,5 @@ public enum MediaType {
     SERIES,
     ANIME,
     MANGA,
-    VIDEO_GAME
+    VIDEOGAME
 }

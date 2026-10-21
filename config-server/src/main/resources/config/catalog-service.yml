@@ -24,3 +24,18 @@ management:
     web:
       exposure:
         include: health,info
+
+
+external:
+  tmdb:
+    base-url: https://api.themoviedb.org/3
+    image-base-url: https://image.tmdb.org/t/p/w500
+    api-token: ${TMDB_API_TOKEN:}
+
+  igdb:
+    base-url: https://api.igdb.com/v4
+    client-id: ${IGDB_CLIENT_ID:}
+    client-secret: ${IGDB_CLIENT_SECRET:}
+
+  jikan:
+    base-url: https://api.jikan.moe/v4

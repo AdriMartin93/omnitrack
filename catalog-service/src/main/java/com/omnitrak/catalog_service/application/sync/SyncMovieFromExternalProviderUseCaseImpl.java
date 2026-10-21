@@ -7,6 +7,8 @@ import com.omnitrak.catalog_service.domain.ports.out.external.ExternalMovieProvi
 import com.omnitrak.catalog_service.domain.ports.out.persistence.CatalogPersistencePort;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 
 @UseCase
 @RequiredArgsConstructor
@@ -17,6 +19,14 @@ public class SyncMovieFromExternalProviderUseCaseImpl implements SyncMovieFromEx
 
     @Override
     public MovieItem execute(Long tmdbMovieId){
+
+        Optional<MovieItem> existingMovie = catalogPersistencePort
+                .findByExternalProviderAndExternalId("TMDB", tmdbMovieId);
+
+        if (existingMovie.isPresent()) {
+            return existingMovie.get();
+        }
+
         MovieItem movie = externalMovieProviderPort.fetchMovieById(tmdbMovieId)
                 .orElseThrow(() -> new IllegalArgumentException("Película no encontrada en: "+ tmdbMovieId));
 

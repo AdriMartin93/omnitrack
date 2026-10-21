@@ -19,12 +19,12 @@ public class AnimeDocumentMapper implements MediaItemMapperStrategy<AnimeItem, A
 
     @Override
     public boolean supportsDomain(MediaItem item){
-        return item instanceof AnimeItem;
+        return item != null && item.getClass().equals(AnimeItem.class);
     }
 
     @Override
     public boolean supportsEntity(MediaDocument document){
-        return document instanceof AnimeDocument;
+        return document != null && document.getClass().equals(AnimeDocument.class);
     }
 
     @Override

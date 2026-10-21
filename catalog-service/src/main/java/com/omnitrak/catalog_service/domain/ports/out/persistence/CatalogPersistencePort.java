@@ -14,7 +14,7 @@ public interface CatalogPersistencePort {
 
     <T extends MediaItem> T save(T mediaItem);
     Optional<MediaItem> findById(String id);
-    Optional<AnimeItem> findByExternalProviderAndExternalId(String externalProvider, Long externalId);
+    <T extends MediaItem> Optional<T> findByExternalProviderAndExternalId(String externalProvider, Long externalId);
     List<MediaItem> findUpcoming(Instant from, Instant to);
     List<MediaItem> search(String query, MediaType type, int page, int size);
     boolean existsById(String id);

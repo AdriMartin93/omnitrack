@@ -14,7 +14,9 @@ import java.util.List;
 public class SeasonDocument {
     private Integer seasonNumber;
     private String name;
-    private String synopsis;
+    private String overview;
+    private String posterUrl;
+    private Integer totalEpisodes;
     private LocalDate airDate;
     private List<EpisodeDocument> episodes;
 }

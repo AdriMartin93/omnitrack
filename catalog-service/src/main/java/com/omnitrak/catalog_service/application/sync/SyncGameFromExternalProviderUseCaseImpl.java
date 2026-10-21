@@ -7,6 +7,8 @@ import com.omnitrak.catalog_service.domain.ports.out.external.ExternalGameProvid
 import com.omnitrak.catalog_service.domain.ports.out.persistence.CatalogPersistencePort;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 
 @UseCase
 @RequiredArgsConstructor
@@ -17,6 +19,14 @@ public class SyncGameFromExternalProviderUseCaseImpl implements SyncGameFromExte
 
     @Override
     public VideoGameItem execute(Long igdbGameId){
+
+        Optional<VideoGameItem> existingGame = catalogPersistencePort
+                .findByExternalProviderAndExternalId("IGDB", igdbGameId);
+
+        if (existingGame.isPresent()) {
+            return existingGame.get();
+        }
+
         VideoGameItem game = externalGameProviderPort.fetchGameById(igdbGameId)
                 .orElseThrow(()-> new IllegalArgumentException("El juego no se ha encontrado :" + igdbGameId));
 

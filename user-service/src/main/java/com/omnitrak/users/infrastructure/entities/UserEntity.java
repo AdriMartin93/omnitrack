@@ -1,10 +1,8 @@
 package com.omnitrak.users.infrastructure.entities;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.omnitrak.users.domain.models.enums.Role;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,8 +32,9 @@ public class UserEntity {
     @Column(name = "email", nullable = false, unique = true, length = 250)
     private String email;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "role", nullable = false)
-    private String role;
+    private Role role;
 
     @Column(name = "avatar_url", length = 500)
     private String avatarUrl;

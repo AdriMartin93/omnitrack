@@ -5,12 +5,15 @@ import com.omnitrak.catalog_service.infrastructure.entities.MediaDocument;
 import org.springframework.data.domain.Page;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Repository;
 
-import java.awt.print.Pageable;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
 
+
+@Repository
 public interface MongoCatalogRepository extends MongoRepository<MediaDocument, String> {
 
     Optional<MediaDocument> findByExternalProviderAndExternalId(String externalProvider, Long externalId);

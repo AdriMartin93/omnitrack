@@ -7,6 +7,8 @@ import com.omnitrak.catalog_service.domain.ports.out.external.ExternalMangaProvi
 import com.omnitrak.catalog_service.domain.ports.out.persistence.CatalogPersistencePort;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Optional;
+
 
 @UseCase
 @RequiredArgsConstructor
@@ -17,6 +19,14 @@ public class SyncMangaFromExternalProviderUseCaseImpl implements SyncMangaFromEx
 
     @Override
     public MangaItem execute(Long externalId){
+
+        Optional<MangaItem> existingManga = catalogPersistencePort
+                .findByExternalProviderAndExternalId("MAL", externalId);
+
+        if (existingManga.isPresent()) {
+            return existingManga.get();
+        }
+
         MangaItem manga = externalMangaProviderPort.fetchMangaById(externalId)
                 .orElseThrow(() -> new IllegalArgumentException("Manga no encontrado con id :" + externalId));
 

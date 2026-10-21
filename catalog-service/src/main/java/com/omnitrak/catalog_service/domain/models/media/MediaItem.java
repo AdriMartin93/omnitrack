@@ -1,6 +1,7 @@
 package com.omnitrak.catalog_service.domain.models.media;
 
 
+import com.omnitrak.catalog_service.domain.models.enums.SyncStatus;
 import com.omnitrak.catalog_service.domain.models.values.TimeRemaining;
 import com.omnitrak.catalog_service.domain.models.enums.MediaType;
 import com.omnitrak.catalog_service.domain.models.enums.ReleaseStatus;
@@ -28,7 +29,7 @@ public abstract class MediaItem {
     protected final String externalProvider;
     protected final Long externalId;
     protected final Instant lastSyncedAt;
-    protected final String syncStatus;
+    protected final SyncStatus syncStatus;
 
     public TimeRemaining getTimeUntilRelease() {
         return new TimeRemaining(this.releaseDate, Instant.now());

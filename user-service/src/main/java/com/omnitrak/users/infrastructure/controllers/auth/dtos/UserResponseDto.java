@@ -1,6 +1,7 @@
 package com.omnitrak.users.infrastructure.controllers.auth.dtos;
 
 import com.omnitrak.users.domain.models.User;
+import com.omnitrak.users.domain.models.enums.Role;
 
 import java.util.UUID;
 
@@ -8,7 +9,7 @@ public record UserResponseDto (
         UUID id,
         String username,
         String email,
-        String role,
+        Role role,
         boolean active
 ) {
     public static UserResponseDto fromDomain(User user) {

@@ -12,6 +12,9 @@ public class Season {
 
     private final int seasonNumber;
     private final String name;
+    private final String overview;
+    private final String posterUrl;
+    private final Integer totalEpisodes;
     private final LocalDate airDate;
     private final List<Episode> episodes;
 }

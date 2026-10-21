@@ -16,6 +16,8 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 public class MangaDocument extends MediaDocument {
 
+    public static final String FIELD_AUTHORS = "authors";
+
     private Integer totalVolumes;
     private Integer totalChapters;
     private List<String> authors;
